@@ -29,7 +29,7 @@ hint - you should be looking at the stage key inside of the objects
 */
 
 function getFinals(data) {
- const finalsTeams = fifaData.filter(item => item.Stage === 'Final');
+ const finalsTeams = data.filter(item => item.Stage === 'Final');
  return finalsTeams;
 
 }
@@ -42,9 +42,9 @@ Use the higher-order function called getYears to do the following:
 2. Receive a callback function getFinals from task 2 
 3. Return an array called years containing all of the years in the getFinals data set*/
 
-function getYears(array, getFinalscb) {
-    const finalYears = fifaData.map(item => item.Year);
-    return finalYears;
+function getYears(array, getFinalCB) {
+    const years = getFinalCB(array).map(item => item.Year);
+    return years;
 }
 
 
@@ -56,14 +56,12 @@ Use the higher-order function getWinners to do the following:
 3. Determines the winner (home or away) of each `finals` game. 
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-function getWinners(array, getFinalscb) {
-    const homeWinners = getFinalscb.filter(item => item['Away Team Goals'] < item['Home Team Goals'] );
-    const awayWinners = getFinalscb.filter(item => item['Away Team Goals'] > item['Home Team Goals'] );
-    const winners = homeWinners.map(item => item['Home Team Name']) + awayWinners.map(item => item['Away Team Name']);
-    return winners;
+function getWinners(array, getFinalCB) {
+    const winner = getFinalCB(array).map(item => item['Home Team Goals'] > item['Away Team Goals'] ? item['Home Team Name'] : item['Away Team Name']);
+    return winner;
 }
 
-
+// getWinners(fifaData, getFinals);
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use the higher-order function getWinnersByYear to do the following:
