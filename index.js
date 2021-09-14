@@ -102,7 +102,18 @@ function getAverageGoals(array) {
     return avg + value['Away Team Goals'] / length;
    }, 0)
 
-   return (homeAverage + awayAverage).toFixed(2) + ""
+   return (homeAverage + awayAverage).toFixed(2)
+
+
+
+// Spirit of the exercise solution:   
+//    function getAverageGoals(arr) {
+//     const home_avg = arr.reduce(function(acc, item){
+//         return acc + item["Home Team Goals"] + item["Away Team Goals"]; 0
+//     });
+//  return (home_avg / arr.length).toFixed(2);
+//  }
+ 
 }
 
 
