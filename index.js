@@ -74,8 +74,11 @@ hint: the strings returned need to exactly match the string in step 4.
  */
 // " use map with item and index"
 
-function getWinnersByYear(/* code here */) {
-    /* code here */
+function getWinnersByYear(array, getYearsCB, getWinnersCB) {
+   const winners = getWinnersCB(array, getFinals);
+   const years = getYearsCB(array, getFinals);
+   const winnersByYear = winners.map((item, index) => `In ${years[index]}, ${winners[index]} won the world cup!`);
+   return winnersByYear;
 }
 
 
